@@ -2,108 +2,134 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Cinzel', 'Courier New', monospace;
 }
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-color: #f0f4f8; /* خلفية فاتحة مريحة */
+    height: 100vh;
+    background: radial-gradient(circle at center, #1a0b2e 0%, #05020a 100%);
+    overflow: hidden;
 }
 
-.app-container {
-    background-color: #ffffff;
-    width: 400px;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+/* حاوية تطبيق الطقس بتصميم جوهرة سحرية عائمة مطابقة للحاسبة */
+.weather-container {
+    background: rgba(30, 15, 50, 0.4);
+    backdrop-filter: blur(25px);
+    border: 2px solid rgba(168, 85, 247, 0.3);
+    width: 420px;
+    padding: 30px;
+    border-radius: 40px;
+    box-shadow: 0 0 50px rgba(139, 92, 246, 0.2),
+                inset 0 0 30px rgba(217, 70, 239, 0.1);
+    animation: floatOrb 6s ease-in-out infinite;
 }
 
+@keyframes floatOrb {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(0.5deg); }
+}
+
+/* قسم البحث */
 .search-box {
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-#city-input {
+.search-box input {
     flex: 1;
-    padding: 12px 15px;
-    border: 1px solid #e1e5ee;
-    border-radius: 10px;
-    outline: none;
-    font-size: 1rem;
-}
-
-#search-btn {
-    padding: 12px 20px;
-    background-color: #1d4ed8; /* أزرق احترافي */
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-#search-btn:hover {
-    background-color: #1e3a8a;
-}
-
-.weather-card {
-    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
-    padding: 30px;
+    background: rgba(10, 5, 20, 0.8);
+    border: 1px solid rgba(217, 70, 239, 0.4);
     border-radius: 15px;
+    padding: 12px 18px;
+    color: #f3e8ff;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: inset 0 0 15px rgba(168, 85, 247, 0.2);
+}
+
+.search-box input::placeholder {
+    color: rgba(243, 232, 255, 0.4);
+}
+
+.search-box button {
+    background: linear-gradient(135deg, #c084fc 0%, #db2777 100%);
+    color: #ffffff;
+    border: none;
+    padding: 0 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(219, 39, 119, 0.6);
+    transition: all 0.3s ease;
+}
+
+.search-box button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(244, 63, 94, 0.9);
+}
+
+/* بطاقة عرض معلومات الطقس الأساسية */
+.weather-card {
+    background: rgba(10, 5, 20, 0.8);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 20px;
+    padding: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #1e293b;
-    margin-bottom: 20px;
-    box-shadow: 0 10px 20px rgba(161, 196, 253, 0.4);
+    margin-bottom: 25px;
+    box-shadow: inset 0 0 20px rgba(168, 85, 247, 0.2);
 }
 
-.weather-main h1 {
-    font-size: 3.5rem;
+.temp-info h1 {
+    font-size: 2.8rem;
+    color: #f3e8ff;
+    text-shadow: 0 0 15px rgba(243, 232, 255, 0.6);
     margin-bottom: 5px;
 }
 
-.weather-main h3 {
-    font-size: 1.2rem;
-    font-weight: 500;
-    margin-bottom: 5px;
-}
-
-.weather-main p {
-    font-size: 0.9rem;
-    color: #475569;
+.temp-info p {
+    color: #e879f9;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
 }
 
 .weather-icon img {
-    width: 100px;
+    width: 80px;
+    filter: drop-shadow(0 0 10px rgba(232, 121, 249, 0.5));
 }
 
+/* تفاصيل إضافية (الرطوبة والرياح) */
 .weather-details {
     display: flex;
-    justify-content: space-around;
-    background-color: #f8fafc;
-    padding: 15px;
+    justify-space-between;
+    gap: 15px;
+}
+
+.detail-item {
+    flex: 1;
+    background: rgba(45, 20, 75, 0.6);
+    border: 1px solid rgba(168, 85, 247, 0.2);
     border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    color: #e2e8f0;
 }
 
-.detail-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
+.detail-item span {
+    display: block;
+    color: #a78bfa;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
 }
 
-.label {
-    font-size: 0.85rem;
-    color: #64748b;
-}
-
-.value {
-    font-weight: 600;
-    color: #0f172a;
+.detail-item p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #f3e8ff;
 }
