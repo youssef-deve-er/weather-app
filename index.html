@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- شريط البحث -->
+        <div class="search-box">
+            <input type="text" id="city-input" placeholder="Search city...">
+            <button id="search-btn">Search City</button>
+        </div>
+
+        <!-- بطاقة الطقس الرئيسية -->
+        <div class="weather-card">
+            <div class="weather-main">
+                <h1 id="temp">--°C</h1>
+                <h3 id="condition">Loading...</h3>
+                <p id="location">City, Country</p>
+            </div>
+            <div class="weather-icon">
+                <img id="w-icon" src="https://cdn-icons-png.flaticon.com/512/3222/3222800.png" alt="weather icon">
+            </div>
+        </div>
+
+        <!-- تفاصيل إضافية (الرطوبة، الرياح) -->
+        <div class="weather-details">
+            <div class="detail-box">
+                <span class="label">💧 Humidity</span>
+                <span class="value" id="humidity">--%</span>
+            </div>
+            <div class="detail-box">
+                <span class="label">💨 Wind</span>
+                <span class="value" id="wind">-- km/h</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
